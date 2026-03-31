@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://c4kqi6t4okoys"]
+
+[ext_resource type="Script" uid="uid://0dsy0g4al0rw" path="res://menu_principal.gd" id="1_bj1uy"]
+[ext_resource type="PackedScene" uid="uid://dbuths60rvcwc" path="res://node_3d.tscn" id="2_gmcsc"]
+[ext_resource type="FontFile" uid="uid://b8mx0kteb5tk4" path="res://Recursos/FONTS/Pixel Digivolve.otf" id="2_ul6ys"]
+[ext_resource type="Texture2D" uid="uid://byup0kn6esyhv" path="res://Recursos/LOGO_LETRAS.png" id="3_ns3he"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ul6ys"]
+bg_color = Color(0.122984864, 0.12298491, 0.122984804, 0.63529414)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns3he"]
+bg_color = Color(0, 0, 0, 0.63529414)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa1tu"]
+bg_color = Color(0, 0, 0, 0.63529414)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6518"]
+bg_color = Color(0, 0, 0, 0.63529414)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[node name="MenuPrincipal" type="Control" unique_id=708055400]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bj1uy")
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=249929066]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ContenedorBotones" type="CanvasLayer" parent="Fondo" unique_id=837350051]
+
+[node name="BotonJugar" type="Button" parent="Fondo/ContenedorBotones" unique_id=274459720]
+offset_left = 229.0
+offset_top = 141.0
+offset_right = 1729.0
+offset_bottom = 441.0
+scale = Vector2(0.125, 0.125)
+theme_override_fonts/font = ExtResource("2_ul6ys")
+theme_override_font_sizes/font_size = 218
+theme_override_styles/normal = SubResource("StyleBoxFlat_ul6ys")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ul6ys")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ns3he")
+
+[node name="Label" type="Label" parent="Fondo/ContenedorBotones/BotonJugar" unique_id=44863609]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 16.0
+offset_right = 1124.0
+offset_bottom = 531.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.46618086, 0.4661808, 0.4661808, 1)
+theme_override_constants/shadow_offset_x = 15
+theme_override_fonts/font = ExtResource("2_ul6ys")
+theme_override_font_sizes/font_size = 210
+text = "JUGAR"
+
+[node name="BotonOpciones" type="Button" parent="Fondo/ContenedorBotones" unique_id=1866886718]
+offset_left = 229.0
+offset_top = 187.0
+offset_right = 1729.0
+offset_bottom = 487.0
+scale = Vector2(0.125, 0.125)
+theme_override_fonts/font = ExtResource("2_ul6ys")
+theme_override_font_sizes/font_size = 218
+theme_override_styles/normal = SubResource("StyleBoxFlat_ul6ys")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ul6ys")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fa1tu")
+
+[node name="Label" type="Label" parent="Fondo/ContenedorBotones/BotonOpciones" unique_id=1470526997]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 16.0
+offset_right = 1286.0
+offset_bottom = 531.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.46618086, 0.4661808, 0.4661808, 1)
+theme_override_constants/shadow_offset_x = 15
+theme_override_fonts/font = ExtResource("2_ul6ys")
+theme_override_font_sizes/font_size = 210
+text = "OPCIONES"
+
+[node name="BotonSalir" type="Button" parent="Fondo/ContenedorBotones" unique_id=1713014103]
+offset_left = 229.0
+offset_top = 233.0
+offset_right = 1729.0
+offset_bottom = 533.0
+scale = Vector2(0.125, 0.125)
+theme_override_fonts/font = ExtResource("2_ul6ys")
+theme_override_font_sizes/font_size = 218
+theme_override_styles/normal = SubResource("StyleBoxFlat_ul6ys")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ul6ys")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a6518")
+
+[node name="Label" type="Label" parent="Fondo/ContenedorBotones/BotonSalir" unique_id=2093521184]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 16.0
+offset_right = 1156.0
+offset_bottom = 531.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.46618086, 0.4661808, 0.4661808, 1)
+theme_override_constants/shadow_offset_x = 15
+theme_override_fonts/font = ExtResource("2_ul6ys")
+theme_override_font_sizes/font_size = 210
+text = "SALIR"
+
+[node name="LogoLetras" type="Sprite2D" parent="Fondo/ContenedorBotones" unique_id=770604422]
+position = Vector2(344, 95)
+scale = Vector2(0.6853384, 0.6853384)
+texture = ExtResource("3_ns3he")
+
+[node name="MUNDO" parent="." unique_id=1764616527 instance=ExtResource("2_gmcsc")]
+
+[connection signal="pressed" from="Fondo/ContenedorBotones/BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="Fondo/ContenedorBotones/BotonOpciones" to="." method="_on_boton_opciones_pressed"]
+[connection signal="pressed" from="Fondo/ContenedorBotones/BotonSalir" to="." method="_on_boton_salir_pressed"]

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c68evcbdwp5fs"]
+
+[ext_resource type="Script" uid="uid://dnvcn8ii7uaxq" path="res://Scripts/Pescadero.gd" id="1_36ot6"]
+[ext_resource type="PackedScene" uid="uid://ctfjht52uqb8j" path="res://Modelos/MC.glb" id="2_c4jqs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_36ot6"]
+radius = 1.5
+height = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gfh7l"]
+radius = 3.0
+
+[node name="NPC_Pescadero" type="Node3D" unique_id=1292393885]
+script = ExtResource("1_36ot6")
+distancia_camara = 2.5
+
+[node name="MODELO" parent="." unique_id=1012800619 instance=ExtResource("2_c4jqs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15685129, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MODELO" unique_id=2005800101]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MODELO/StaticBody3D" unique_id=733670106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17670524, 0.5557575, 0.13341522)
+shape = SubResource("CapsuleShape3D_36ot6")
+
+[node name="AreaDeteccion" type="Area3D" parent="." unique_id=959663431]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaDeteccion" unique_id=1563131478]
+shape = SubResource("SphereShape3D_gfh7l")
+
+[node name="PuntoMirada" type="Marker3D" parent="." unique_id=792045482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14968228, 2.1982303, 0)

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://5gfa6ew1keu0"]
+
+[ext_resource type="Script" uid="uid://djq2ikyy5du1q" path="res://Scripts/Bobber.gd" id="1_56cvk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56cvk"]
+shading_mode = 0
+albedo_color = Color(0.74053013, 0.060559705, 0.06512088, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7oj3d"]
+material = SubResource("StandardMaterial3D_56cvk")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_56cvk"]
+radius = 0.3
+
+[node name="Node3D" type="RigidBody3D" unique_id=1442995405]
+continuous_cd = true
+script = ExtResource("1_56cvk")
+velocidad_bob = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1573377470]
+mesh = SubResource("SphereMesh_7oj3d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=599917186]
+shape = SubResource("SphereShape3D_56cvk")

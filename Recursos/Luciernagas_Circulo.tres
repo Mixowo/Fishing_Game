@@ -1,0 +1,14 @@
+[gd_resource type="SphereMesh" format=3 uid="uid://cpklvfv84hbfm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u8at"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[resource]
+material = SubResource("StandardMaterial3D_7u8at")
+radius = 0.05
+height = 0.1

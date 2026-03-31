@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dsgrfp8vd25al"]
+
+[ext_resource type="Script" uid="uid://qp6dfttljpk7" path="res://Scripts/PezCapturado.gd" id="1_s7oni"]
+[ext_resource type="PackedScene" uid="uid://dm34mvww3x1w3" path="res://robalo1.glb" id="2_66po6"]
+
+[node name="Node3D" type="Node3D" unique_id=1514666428]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_s7oni")
+
+[node name="robalo1" parent="." unique_id=728952044 instance=ExtResource("2_66po6")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="robalo2" parent="." unique_id=628802213 instance=ExtResource("2_66po6")]
+visible = false

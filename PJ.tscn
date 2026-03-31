@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://b4rka67pl2ql1"]
+
+[ext_resource type="Script" uid="uid://x1bjo318j1sl" path="res://MovimientoPlayer.gd" id="1_ymk31"]
+[ext_resource type="PackedScene" uid="uid://cfons1lw1y8ia" path="res://mc.tscn" id="2_ywq7l"]
+[ext_resource type="Texture2D" uid="uid://y8kjxhcokss2" path="res://Recursos/BRAZO_POLY.png" id="3_f8p3w"]
+[ext_resource type="Script" uid="uid://dx8atjvereq2g" path="res://Scripts/CañaPesca.gd" id="3_vixk6"]
+[ext_resource type="FontFile" uid="uid://dxi18l7givn0r" path="res://Recursos/FONTS/Pixel Digivolve Italic.otf" id="4_a41a1"]
+[ext_resource type="PackedScene" uid="uid://5gfa6ew1keu0" path="res://Escenas/Bobber.tscn" id="4_bqi3k"]
+[ext_resource type="PackedScene" uid="uid://dsgrfp8vd25al" path="res://Escenas/Pez.tscn" id="5_kaccv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ymk31"]
+
+[sub_resource type="Gradient" id="Gradient_a41a1"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6dgc7"]
+gradient = SubResource("Gradient_a41a1")
+
+[sub_resource type="Curve" id="Curve_ywq7l"]
+_data = [Vector2(0.054726362, 0.35570472), 0.0, 0.0, 0, 0, Vector2(0.3333333, 0.5973155), 0.0, 0.0, 0, 0, Vector2(1, 0.12304258), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vixk6"]
+curve = SubResource("Curve_ywq7l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bqi3k"]
+emission_shape_scale = Vector3(0.15, 0.15, 0.15)
+emission_shape = 1
+emission_sphere_radius = 1.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.5
+gravity = Vector3(0, 2, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_vixk6")
+color_ramp = SubResource("GradientTexture1D_6dgc7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a41a1"]
+transparency = 1
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_a41a1"]
+material = SubResource("StandardMaterial3D_a41a1")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dgc7"]
+transparency = 1
+albedo_color = Color(0.20080861, 0.20080861, 0.20080861, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ywq7l"]
+material = SubResource("StandardMaterial3D_6dgc7")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywq7l"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0.7647059, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a41a1"]
+material = SubResource("StandardMaterial3D_ywq7l")
+size = Vector3(0.1, 0.3, 0.1)
+
+[node name="Player" type="Node3D" unique_id=326698382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037731886, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=330346907]
+script = ExtResource("1_ymk31")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=584418757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20588541, 0, 0.61437255)
+shape = SubResource("CapsuleShape3D_ymk31")
+
+[node name="MC" parent="CharacterBody3D" unique_id=2029765314 instance=ExtResource("2_ywq7l")]
+transform = Transform3D(-0.87610143, 0, 1.2137444e-07, 0, 0.8032646, 0, -1.3228764e-07, 0, -0.80382663, -0.039923787, -1.0464001, 0.76309586)
+
+[node name="PolvoCorrer" type="GPUParticles3D" parent="CharacterBody3D/MC" unique_id=1463516039 groups=["efectos_correr"]]
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 0.99999875, 0, 2.9842795e-13, 0, 1.0000002, 0.087359026, 0.17381322, -0.13150758)
+emitting = false
+amount = 1
+lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_bqi3k")
+draw_pass_1 = SubResource("SphereMesh_a41a1")
+
+[node name="PolvoCorrer2" type="GPUParticles3D" parent="CharacterBody3D/MC" unique_id=2021560516 groups=["efectos_correr"]]
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 0.99999875, 0, 2.9842795e-13, 0, 1.0000002, 0.263176, 0.17381322, -0.13150758)
+emitting = false
+amount = 1
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_bqi3k")
+draw_pass_1 = SubResource("SphereMesh_ywq7l")
+
+[node name="FarolaMesh" type="MeshInstance3D" parent="CharacterBody3D/MC" unique_id=1001217835]
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 0.9999989, 0, 2.5579538e-13, 0, 1.0000002, 0.5033709, 1.2265033, 0.21829116)
+visible = false
+mesh = SubResource("BoxMesh_a41a1")
+
+[node name="FarolaLuz" type="OmniLight3D" parent="CharacterBody3D/MC/FarolaMesh" unique_id=1982954350]
+transform = Transform3D(1.1414204, 0, -2.5579538e-13, 0, 1.2449211, 0, 1.4210855e-14, 0, 1.2440491, -0.3133922, -0.009763785, 0.58911777)
+light_color = Color(1, 1, 0.7529412, 1)
+light_energy = 0.5
+light_indirect_energy = 0.0
+shadow_enabled = true
+omni_range = 60.0
+
+[node name="CañaPesca" type="Node3D" parent="CharacterBody3D/MC" unique_id=907458291]
+transform = Transform3D(-1.1414204, 0, -1.7234967e-07, 0, 1.2449197, 0, 1.8784623e-07, 0, -1.2440494, -0.04556969, 1.3026841, 0.94932896)
+script = ExtResource("3_vixk6")
+bobber_scene = ExtResource("4_bqi3k")
+pez_scene = ExtResource("5_kaccv")
+distancia_lanzamiento = 6.0
+capa_agua = 4
+
+[node name="PuntaCaña" type="Marker3D" parent="CharacterBody3D/MC/CañaPesca" unique_id=2123097595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7574983, 0.7300828, 1.24182)
+visible = false
+
+[node name="Camara" type="Node3D" parent="CharacterBody3D" unique_id=1217053649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167027, 0.32082558)
+
+[node name="Camera3D_3ra" type="Camera3D" parent="CharacterBody3D/Camara" unique_id=637054830]
+transform = Transform3D(1, 0, 0, 0, 0.89879405, 0.43837115, 0, -0.43837115, 0.89879405, 0, 1.848, 2.651)
+visible = false
+
+[node name="Camera3D_1ra" type="Camera3D" parent="CharacterBody3D/Camara" unique_id=1533286885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15811545, 0.5895774, 0)
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody3D" unique_id=1061883131]
+
+[node name="InterfazReloj" type="Control" parent="CharacterBody3D/CanvasLayer" unique_id=2084887271]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Visual" type="TextureRect" parent="CharacterBody3D/CanvasLayer/InterfazReloj" unique_id=242116840]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 82.99999
+offset_top = 319.00003
+offset_right = 1619.0
+offset_bottom = 1343.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.36269957, 0.36269957)
+texture = ExtResource("3_f8p3w")
+
+[node name="LabelHora" type="Label" parent="CharacterBody3D/CanvasLayer/InterfazReloj/Visual" unique_id=976605954]
+layout_mode = 0
+offset_left = 890.5442
+offset_top = 402.53696
+offset_right = 936.5442
+offset_bottom = 425.53696
+rotation = 0.17159744
+scale = Vector2(3.765604, 3.765604)
+theme_override_colors/font_shadow_color = Color(0.9098039, 1, 0.74509805, 0.14117648)
+theme_override_fonts/font = ExtResource("4_a41a1")
+theme_override_font_sizes/font_size = 16
+text = "HORA"
+
+[node name="LabelDinero" type="Label" parent="CharacterBody3D/CanvasLayer/InterfazReloj/Visual" unique_id=852866347]
+layout_mode = 0
+offset_left = 865.7303
+offset_top = 488.0071
+offset_right = 926.7303
+offset_bottom = 511.0071
+rotation = 0.18864445
+scale = Vector2(2.0325, 2.0325)
+theme_override_colors/font_shadow_color = Color(0.9098039, 1, 0.74509805, 0.14117648)
+theme_override_fonts/font = ExtResource("4_a41a1")
+text = "hora"

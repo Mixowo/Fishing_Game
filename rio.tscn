@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bcip822d8nstw"]
+
+[ext_resource type="PackedScene" uid="uid://tskk4803grei" path="res://Modelos/pescaconfriends.glb" id="1_w8seh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xcju"]
+
+[node name="RIO" type="Node3D" unique_id=1412400644]
+
+[node name="pescaconfriends" parent="." unique_id=1787724755 instance=ExtResource("1_w8seh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8404182, -1.1920929e-07, -0.13634706)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pescaconfriends" unique_id=1415546265]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -43.8281, 45.48402)
+shape = SubResource("BoxShape3D_3xcju")
