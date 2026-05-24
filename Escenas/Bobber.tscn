@@ -8,11 +8,11 @@ albedo_color = Color(0.74053013, 0.060559705, 0.06512088, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_7oj3d"]
 material = SubResource("StandardMaterial3D_56cvk")
-radius = 0.3
-height = 0.6
+radius = 0.15
+height = 0.3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_56cvk"]
-radius = 0.3
+radius = 0.15
 
 [node name="Node3D" type="RigidBody3D" unique_id=1442995405]
 continuous_cd = true

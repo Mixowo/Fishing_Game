@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 10
+const SPEED = 50
 const JUMP_VELOCITY = 10
 const SENSITIVITY = 0.003
 const SPRINT_SPEED = 18
@@ -188,10 +188,10 @@ func actualizar_interfaz():
 	label_hora.text = "%02d:%02d" % [int(h), m]
 	label_dinero.text = "$ " + str(GestoMundo.dinero_actual)
 
-	if h > 6.0 and h < 15.0:
+	if h >= 6.0 and h < 17.0:
 		oscuridad_actual = 1.0
-	elif h >= 15.0 and h < 18.0:
-		oscuridad_actual = 1.0 - ((h - 18.0) / 2.0)
+	elif h >= 17.0 and h < 19.0:
+		oscuridad_actual = 1.0 - ((h - 17.0) / 2.0)
 	elif h >= 5.0 and h < 6.0:
 		oscuridad_actual = (h - 5.0) / 1.0
 	else:

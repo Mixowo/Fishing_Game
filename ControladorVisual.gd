@@ -38,7 +38,7 @@ func _process(delta):
 
 func actualizar_iluminacion_astral(h):
 	if h > 6.0 and h < 18.0:
-		sol_luz.light_color = Color("bababaff") 
+		sol_luz.light_color = Color("5b5b5bff") 
 		sol_luz.light_energy = 0.4
 	else:
 		sol_luz.light_color = Color("5b6e9e")

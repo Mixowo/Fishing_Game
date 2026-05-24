@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dxi18l7givn0r" path="res://Recursos/FONTS/Pixel Digivolve Italic.otf" id="4_a41a1"]
 [ext_resource type="PackedScene" uid="uid://5gfa6ew1keu0" path="res://Escenas/Bobber.tscn" id="4_bqi3k"]
 [ext_resource type="PackedScene" uid="uid://dsgrfp8vd25al" path="res://Escenas/Pez.tscn" id="5_kaccv"]
+[ext_resource type="PackedScene" uid="uid://d07kaqepsce88" path="res://MinijuegoPesca.tscn" id="6_bqi3k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ymk31"]
 
@@ -109,6 +110,7 @@ bobber_scene = ExtResource("4_bqi3k")
 pez_scene = ExtResource("5_kaccv")
 distancia_lanzamiento = 6.0
 capa_agua = 4
+minijuego_scene = ExtResource("6_bqi3k")
 
 [node name="PuntaCaña" type="Marker3D" parent="CharacterBody3D/MC/CañaPesca" unique_id=2123097595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7574983, 0.7300828, 1.24182)
@@ -118,11 +120,11 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167027, 0.32082558)
 
 [node name="Camera3D_3ra" type="Camera3D" parent="CharacterBody3D/Camara" unique_id=637054830]
-transform = Transform3D(1, 0, 0, 0, 0.89879405, 0.43837115, 0, -0.43837115, 0.89879405, 0, 1.848, 2.651)
+transform = Transform3D(1, 0, 0, 0, 0.89879405, 0.43837115, 0, -0.43837115, 0.89879405, -0.2040863, 1.848, 2.651)
 visible = false
 
 [node name="Camera3D_1ra" type="Camera3D" parent="CharacterBody3D/Camara" unique_id=1533286885]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15811545, 0.5895774, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15811545, 0.5895774, 0.042238086)
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody3D" unique_id=1061883131]

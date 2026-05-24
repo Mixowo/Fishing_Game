@@ -19,6 +19,9 @@ signal pesca_completada(nombre_pez: String)
 @export var distancia_lanzamiento: float = 12.0
 @export var capa_agua: int = 2              ## Layer de física del agua (ajusta al tuyo)
 
+@export var minijuego_scene: PackedScene
+var pez_data_actual: Dictionary = {}
+
 # ─── REFERENCIAS ─────────────────────────────────────────────────────────────
 @onready var punta_caña : Marker3D = $"../Armature/Skeleton3D/mano_izq_001/PuntaCaña" # usa la posición de la propia caña
 var linea: MeshInstance3D
@@ -49,7 +52,7 @@ func _ready():
 	linea = MeshInstance3D.new()
 	linea.mesh = ImmediateMesh.new()
 	var mat = StandardMaterial3D.new()
-	mat.albedo_color = Color("4a2800")  # color café de cuerda
+	mat.albedo_color = Color("000000ff")  # color café de cuerda
 	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	linea.material_override = mat
 	add_child(linea)
@@ -190,13 +193,27 @@ func _iniciar_minijuego():
 	if estado != Estado.PIQUE:
 		return
 	estado = Estado.MINIJUEGO
-	
-	# Liberar el mouse para poder clickear el botón
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-	ui_minijuego = _crear_ui_minijuego()
-	get_tree().current_scene.add_child(ui_minijuego)
 
+	# Obtener datos del pez según el tipo de agua
+	pez_data_actual = GestoMundo.get_pez_disponible(tipo_agua_actual)
+
+	if minijuego_scene:
+		var mini = minijuego_scene.instantiate()
+		mini.puntos_objetivo = pez_data_actual.get("puntos_fase1", 100)
+		mini.toques_fase2    = pez_data_actual.get("toques_fase2", 1)
+		mini.velocidad       = pez_data_actual.get("velocidad", "medio")
+		get_tree().current_scene.add_child(mini)
+		mini.pesca_exitosa.connect(_al_pescar_exitoso)
+		mini.pesca_fallida.connect(_al_pescar_fallido)
+	else:
+		push_warning("CañaPesca: Asigna minijuego_scene en el Inspector.")
+		_al_terminar_pesca()
+
+func _al_pescar_exitoso():
+	_pescar_pez()
+	
+func _al_pescar_fallido():
+	recoger_sin_pez()
 
 func _crear_ui_minijuego() -> CanvasLayer:
 	## Panel centrado con un botón "¡JALAR!" pulsable
@@ -330,11 +347,12 @@ func _animar_pez_manual(pez: Node3D, desde: Vector3):
 
 
 func _al_terminar_pesca(_nombre: String = ""):
-	var pez_data = GestoMundo.get_pez_disponible(tipo_agua_actual)
+	# Usa los datos del pez que ya se guardaron en pez_data_actual
 	estado = Estado.GUARDADA
-	GestoMundo.dinero_actual += pez_data.valor
-	pesca_completada.emit(pez_data.nombre)
-	print("¡Pescaste: ", pez_data.nombre, " — $", pez_data.valor, "!")
+	GestoMundo.dinero_actual += pez_data_actual.get("valor", 10)
+	pesca_completada.emit(pez_data_actual.get("nombre", "Pez"))
+	print("¡Pescaste: ", pez_data_actual.get("nombre", "Pez"), 
+		  " — $", pez_data_actual.get("valor", 10), "!")
 
 	if anim_player and anim_player.has_animation("IDLE1"):
 		anim_player.stop()

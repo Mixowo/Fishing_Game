@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d07kaqepsce88"]
+
+[ext_resource type="Script" uid="uid://bwj66y3b15762" path="res://Scripts/MinijuegoPesca.gd" id="1_j5y2b"]
+
+[node name="MinijuegoPesca" type="CanvasLayer" unique_id=1908129226]
+script = ExtResource("1_j5y2b")
